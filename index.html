@@ -4,15 +4,44 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JS Advanced</title>
+    <!-- Importing Bulma (CSS Library) -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css"
+    />
+    <!-- My CSS file -->
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>TV Show Search</h1>
+    <section class="hero is-small is-primary">
+      <div class="hero-body">
+        <p class="title">TV Show Finder</p>
+        <p class="subtitle">Using API</p>
+      </div>
+    </section>
+
+    <!-- <h1>TV Show Search</h1> -->
+    <br />
+
     <form id="searchForm">
-      <input type="text" placeholder="Search by show name" name="query" />
-      <button>Search</button>
+      <div class="field is-grouped">
+        <div class="control is-expanded">
+          <input
+            type="text"
+            placeholder="Search by show name"
+            name="query"
+            class="input"
+          />
+        </div>
+        <div class="control">
+          <button class="button is-info">Search</button>
+        </div>
+      </div>
     </form>
-    <div id="imageContainer"></div>
+
+    <div id="outerContainer">
+      <div id="imageContainer"></div>
+    </div>
     <!-- Imported Axios (JS) Library -->
     <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
     <script src="app.js"></script>
