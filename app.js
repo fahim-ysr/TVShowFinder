@@ -27,6 +27,21 @@ const addImage = (shows) => {
   // Clears images from previous search
   imageContainer.innerHTML = "";
 
+  // Checks if there are any shows (with image and link) at all
+  const hasShows = shows.some(
+    (res) => res.show.image.medium && res.show.officialSite
+  );
+
+  // Informs if no shows with the title are found
+  if (!hasShows) {
+    const msg = document.createElement("p");
+    msg.textContent = "Sorry no items found.";
+    msg.style.textAlign = "center";
+    msg.style.fontSize = "25px";
+    msg.style.marginTop = "20px";
+    document.body.append(msg);
+  }
+
   // For loop to loop thorugh all the shows
   for (let result of shows) {
     // Since not all the movies have image and links, it only proceeds with those that have
