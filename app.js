@@ -1,5 +1,6 @@
 // !Building a TV Show Search App using Axios
 
+let msgDisplayed = false;
 const form = document.querySelector("#searchForm");
 // Creating an event listener to be able to submit an input
 form.addEventListener("submit", async function (q) {
@@ -7,16 +8,27 @@ form.addEventListener("submit", async function (q) {
   // The code below gets executed when the `Search` button is clicked
   q.preventDefault(); // Stops the default action of an element from happening
   console.log("Submitted!");
-  const searchTerm = form.elements.query.value; //   Stores input data of the `searchForm`
+
+  const searchTerm = form.elements.query.value.trim(); //   Stores input data of the `searchForm`
+
+  // Shows "No input" if the input is empty
+  if (searchTerm == "") {
+    displayMsg("No input");
+    return; //Exits the function if search is empty
+  }
 
   // API operation using axios
-  const res = await axios.get(
-    `https://api.tvmaze.com/search/shows?q=${searchTerm}`
-  );
+  try {
+    const res = await axios.get(
+      `https://api.tvmaze.com/search/shows?q=${searchTerm}`
+    );
 
-  //   Calls the `addImage` function to add images to the page
-  addImage(res.data);
-
+    //   Calls the `addImage` function to add images to the page
+    addImage(res.data);
+  } catch (err) {
+    console.log("Error!", err);
+    displayMsg("Sorry no items found.");
+  }
   //   Empties query inputs
   form.elements.query.value = "";
 });
@@ -26,6 +38,7 @@ const addImage = (shows) => {
   const imageContainer = document.getElementById("imageContainer");
   // Clears images from previous search
   imageContainer.innerHTML = "";
+  msgDisplayed = false;
 
   // Checks if there are any shows (with image and link) at all
   const hasShows = shows.some(
@@ -57,5 +70,20 @@ const addImage = (shows) => {
       link.append(img);
       imageContainer.append(link);
     }
+  }
+};
+
+// Function to display messages
+const displayMsg = (message) => {
+  // Checks if the flag is true or not
+  if (!msgDisplayed) {
+    imageContainer.innerHTML = ""; // Empties the Container
+    const msg = document.createElement("p");
+    msg.textContent = message;
+    msg.style.textAlign = "center";
+    msg.style.fontSize = "25px";
+    msg.style.marginTop = "20px";
+    imageContainer.appendChild(msg);
+    msgDisplayed = true; // Sets flag to true since msg is displayed
   }
 };
