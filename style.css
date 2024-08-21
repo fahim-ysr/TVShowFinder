@@ -1,16 +1,57 @@
 body {
   transition: 1s background-color;
+  margin: 0;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 #imageContainer {
+  vertical-align: middle;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 15px;
+  gap: 5px;
   margin-top: 30px;
 }
 
+#imageContainer a {
+  flex: 0 0 calc(20% - 8px); /* 20% width for 5 items per row, minus the gap */
+  max-width: calc(20% - 8px);
+  display: block;
+  line-height: 0;
+}
+
 #imageContainer img {
-  max-width: 200px;
+  width: 80%;
   height: auto;
+  display: block;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 1200px) {
+  #imageContainer a {
+    flex-basis: calc(25% - 8px);
+    max-width: calc(25% - 8px);
+  }
+}
+
+@media (max-width: 900px) {
+  #imageContainer a {
+    flex-basis: calc(33.333% - 8px);
+    max-width: calc(33.333% - 8px);
+  }
+}
+
+@media (max-width: 600px) {
+  #imageContainer a {
+    flex-basis: calc(50% - 5px);
+    max-width: calc(50% - 5px);
+  }
+}
+
+@media (max-width: 400px) {
+  #imageContainer a {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
 }

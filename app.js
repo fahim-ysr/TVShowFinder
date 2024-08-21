@@ -46,11 +46,11 @@ const addImage = (shows) => {
   for (let result of shows) {
     // Since not all the movies have image and links, it only proceeds with those that have
     if (result.show.image.medium && result.show.officialSite) {
-      const link = document.createElement("A");
+      const link = document.createElement("a");
       link.href = result.show.officialSite; //Assigns URL to the images
       link.target = "_blank"; // Opens in a new tab
 
-      const img = document.createElement("IMG");
+      const img = document.createElement("img");
       img.src = result.show.image.medium;
       // document.body.appendChild(img);
       // imageContainer.append(img);
