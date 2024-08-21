@@ -23,13 +23,24 @@ form.addEventListener("submit", async function (q) {
 
 // This function adds image to the html page
 const addImage = (shows) => {
+  const imageContainer = document.getElementById("imageContainer");
+  // Clears images from previous search
+  imageContainer.innerHTML = "";
+
   // For loop to loop thorugh all the shows
   for (let result of shows) {
-    // Since not all the movies have image, it only proceeds with those that have image
-    if (result.show.image.medium) {
+    // Since not all the movies have image and links, it only proceeds with those that have
+    if (result.show.image.medium && result.show.officialSite) {
+      const link = document.createElement("A");
+      link.href = result.show.officialSite; //Assigns URL to the images
+      link.target = "_blank"; // Opens in a new tab
+
       const img = document.createElement("IMG");
       img.src = result.show.image.medium;
-      document.body.append(img);
+      // document.body.appendChild(img);
+      // imageContainer.append(img);
+      link.append(img);
+      imageContainer.append(link);
     }
   }
 };
