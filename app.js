@@ -1,11 +1,20 @@
 // !Building a TV Show Search App using Axios
 
-let msgDisplayed = false;
+let msgDisplayed = false; // Flag to know if a message is displayed or not
+const title = document.getElementById("title"); // Selects the title of page
 const form = document.querySelector("#searchForm");
+
+// Detects click on title and reloads the page
+title.addEventListener("click", function () {
+  location.reload();
+});
+
 // Creating an event listener to be able to submit an input
 form.addEventListener("submit", async function (q) {
-  // q = input of the search box
   // The code below gets executed when the `Search` button is clicked
+
+  // q is the input of the search box
+
   q.preventDefault(); // Stops the default action of an element from happening
   console.log("Submitted!");
 
