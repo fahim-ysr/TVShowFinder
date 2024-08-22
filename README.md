@@ -6,6 +6,16 @@
 
 <br>
 
+**Tech Stack**
+
+    -> HTML5
+    -> CSS3
+    -> JavaScript
+    -> Bulma CSS Framework
+    -> Axios HTTP Client
+
+<br>
+
 **Key Features**
 
     -> Title:
@@ -50,16 +60,6 @@
 
         - The layout adjusts for different screen sizes.
         
-<br>
-
-**Tech Stack**
-
-    -> HTML5
-    -> CSS3
-    -> JavaScript (ES6+)
-    -> Bulma CSS Framework
-    -> Axios HTTP Client
-
 <br>
 
 **How to Use?**
