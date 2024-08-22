@@ -1,4 +1,4 @@
-# TV Show Finder App Documentation
+# TV Show Finder Documentation
 
 **Overview**
 
